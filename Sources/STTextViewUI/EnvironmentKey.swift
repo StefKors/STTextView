@@ -9,6 +9,10 @@ private struct FontEnvironmentKey: EnvironmentKey {
     static var defaultValue: NSFont = .preferredFont(forTextStyle: .body)
 }
 
+private struct RulerFontEnvironmentKey: EnvironmentKey {
+    static var defaultValue: NSFont = .monospacedSystemFont(ofSize: 0, weight: .regular)
+}
+
 private struct IsRulerVisibleEnvironmentKey: EnvironmentKey {
     static var defaultValue: Bool = false
 }
@@ -22,6 +26,11 @@ internal extension EnvironmentValues {
     var isRulerVisible: Bool {
         get { self[IsRulerVisibleEnvironmentKey.self] }
         set { self[IsRulerVisibleEnvironmentKey.self] = newValue }
+    }
+
+    var rulerFont: NSFont {
+        get { self[RulerFontEnvironmentKey.self] }
+        set { self[RulerFontEnvironmentKey.self] = newValue }
     }
 }
 

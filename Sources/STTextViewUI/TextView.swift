@@ -63,6 +63,7 @@ private struct TextViewRepresentable: NSViewRepresentable {
     @Environment(\.lineSpacing) private var lineSpacing
 
     @Environment(\.isRulerVisible) private var isRulerVisible
+    @Environment(\.rulerFont) private var rulerFont
 
     @Binding private var text: AttributedString
     @Binding private var selection: NSRange?
@@ -132,9 +133,9 @@ private struct TextViewRepresentable: NSViewRepresentable {
 
         if textView.isRulerVisible != isRulerVisible {
             let rulerView = STLineNumberRulerView(textView: textView)
-            rulerView.font = NSFont.monospacedSystemFont(ofSize: 0, weight: .regular)
+            rulerView.font = rulerFont
             rulerView.allowsMarkers = true
-            rulerView.highlightSelectedLine = true
+            rulerView.highlightSelectedLine = options.contains(.highlightSelectedLine)
             scrollView.verticalRulerView = rulerView
             textView.isRulerVisible = isRulerVisible
         }

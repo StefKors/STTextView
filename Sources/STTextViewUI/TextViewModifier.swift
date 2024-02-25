@@ -27,8 +27,14 @@ extension TextViewModifier {
     public func textViewFont(_ font: NSFont) -> TextView.EnvironmentModifier<Self, NSFont> {
         TextView.EnvironmentModifier(content: self, keyPath: \.font, value: font)
     }
-
+    
+    /// Enables the text view ruler
     public func textViewRuler(_ visible: Bool) -> TextView.EnvironmentModifier<Self, Bool> {
         TextView.EnvironmentModifier(content: self, keyPath: \.isRulerVisible, value: visible)
+    }
+    
+    /// Set the default font for the text view ruler in this view.
+    public func textViewRuler(_ font: NSFont) -> TextView.EnvironmentModifier<Self, NSFont> {
+        TextView.EnvironmentModifier(content: self, keyPath: \.rulerFont, value: font)
     }
 }
