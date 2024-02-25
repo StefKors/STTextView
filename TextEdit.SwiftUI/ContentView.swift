@@ -18,6 +18,7 @@ struct ContentView: View {
                 options: [.wrapLines, .highlightSelectedLine]
             )
             .textViewFont(.monospacedDigitSystemFont(ofSize: NSFont.systemFontSize, weight: .regular))
+            .textViewRuler(true)
 
             // Button("Modify") {
             //     text.insert(AttributedString("\(counter)\n"), at: text.startIndex)
